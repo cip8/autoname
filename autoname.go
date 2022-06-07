@@ -8,7 +8,6 @@ import (
 
 /*
 	@todo :: add more personalities.
-	@todo :: add formatting (camelCase, under_score, spaces).
 	@todo :: improve people's comments.
 */
 
@@ -182,7 +181,7 @@ var (
 )
 
 // Generate returns a random name from the list of adjectives, colors and surnames.
-func Generate() string {
+func Generate(delimiter string) string {
 	rand.Seed(time.Now().UnixNano())
-	return fmt.Sprintf("%s_%s_%s", adjectives[rand.Intn(len(adjectives))], colors[rand.Intn(len(colors))], people[rand.Intn(len(people))])
+	return fmt.Sprintf("%s%s%s%s%s", adjectives[rand.Intn(len(adjectives))], delimiter, colors[rand.Intn(len(colors))], delimiter, people[rand.Intn(len(people))])
 }
